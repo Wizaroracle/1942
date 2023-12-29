@@ -30,22 +30,22 @@ function initializeEnemies() {
 initializeEnemies();
 
 function displayHero() {
-        // Check left boundary
+    
         if (hero.x < 0) {
             hero.x = 0;
         }
     
-        // Check right boundary
+    
         if (hero.x > 630) {
             hero.x = 630;
         }
     
-        // Check top boundary
+
         if (hero.y < 0) {
             hero.y = 0;
         }
     
-        // Check bottom boundary
+    
         if (hero.y > 760) {
             hero.y = 760;
         }
@@ -91,8 +91,8 @@ function moveEnemies() {
     for (var i = 0; i < enemies.length; i++) {
         enemies[i].y += 2;
 
-        // Check bottom boundary and respawn
-        if (enemies[i].y > 800) { // Adjusted the value to 800 based on your container height
+        
+        if (enemies[i].y > 800) { 
             respawnEnemy(enemies, i);
         }
     }
@@ -102,8 +102,8 @@ function moveEnemies2() {
     for (var i = 0; i < enemies2.length; i++) {
         enemies2[i].y += 4;
 
-        // Check bottom boundary and respawn
-        if (enemies2[i].y > 800) { // Adjusted the value to 800 based on your container height
+        
+        if (enemies2[i].y > 800) { 
             respawnEnemy(enemies2, i);
         }
     }
@@ -112,7 +112,7 @@ function respawnEnemy(enemyArray, i) {
     var collision = false;
     var newX = Math.random() * 500;
     var newY = 0;
-    var initialHealth = 2; // Set the initial health value here, you can adjust it as needed
+    var initialHealth = 2; 
 
     for (var j = 0; j < enemyArray.length; j++) {
         if (
@@ -137,7 +137,7 @@ function respawnEnemy2(enemyArray, i) {
     var collision = false;
     var newX = Math.random() * 500;
     var newY = 0;
-    var initialHealth = 4; // Set the initial health value here, you can adjust it as needed
+    var initialHealth = 4; 
 
     for (var j = 0; j < enemyArray.length; j++) {
         if (
@@ -204,9 +204,9 @@ var isHeroInvincible = false;
 
 function checkCollisions() {
     if (isHeroInvincible) {
-        return; // If hero is invincible, don't process collisions
+        return; 
     }
-     // Check collisions with enemies
+     
      for (var i = 0; i < enemies.length; i++) {
         if (
             hero.x < enemies[i].x + 100 &&
@@ -218,7 +218,7 @@ function checkCollisions() {
                 hero.score -= 5;
                 updateScore();
 
-                // Apply cooldown and initiate opacity change
+                
                 isHeroInvincible = true;
                 applyOpacityChange();
                 setTimeout(function () {
@@ -255,9 +255,9 @@ function checkCollisions() {
                 bullets[j] = bullets[bullets.length - 1];
                 bullets.pop();
                 updateScore();
-                 // Play bullet sound
+                 
                  var bulletSound = document.getElementById("explosionSound");
-                 bulletSound.currentTime = 0; // Reset audio to the beginning
+                 bulletSound.currentTime = 0; 
                  bulletSound.play();
             }
         }
@@ -289,9 +289,9 @@ function checkCollisions() {
                 bullets2[j] = bullets2[bullets2.length - 1];
                 bullets2.pop();
                 updateScore();
-                 // Play bullet sound
+                 
                  var bulletSound = document.getElementById("explosionSound");
-                 bulletSound.currentTime = 0; // Reset audio to the beginning
+                 bulletSound.currentTime = 0; 
                  bulletSound.play();     
             }
         }
@@ -325,7 +325,7 @@ function checkCollisions() {
                 updateScore();
 
                 var bulletSound = document.getElementById("explosionSound2");
-                 bulletSound.currentTime = 0; // Reset audio to the beginning
+                 bulletSound.currentTime = 0; 
                  bulletSound.play();     
             }
         }
@@ -359,7 +359,7 @@ function checkCollisions() {
                 updateScore();
 
                 var bulletSound = document.getElementById("explosionSound2");
-                 bulletSound.currentTime = 0; // Reset audio to the beginning
+                 bulletSound.currentTime = 0; 
                  bulletSound.play();     
             }
         }
@@ -370,12 +370,12 @@ function applyOpacityChange() {
     var opacity = 1;
     var interval = setInterval(function () {
         heroElement.style.opacity = opacity;
-        opacity = opacity === 1 ? 0.5 : 1; // Toggle opacity between 0.5 and 1
+        opacity = opacity === 1 ? 0.5 : 1; 
     }, 100);
 
     setTimeout(function () {
         clearInterval(interval);
-        heroElement.style.opacity = 1; // Reset opacity to 1 after 1 second
+        heroElement.style.opacity = 1; 
     }, 1000);
 }
 function playExplosionAnimation(x, y) {
@@ -386,7 +386,7 @@ function playExplosionAnimation(x, y) {
     document.getElementById("container").appendChild(explosion);
 
     var explosionSound = document.getElementById("explosionSound");
-    explosionSound.currentTime = 0; // Reset audio to the beginning
+    explosionSound.currentTime = 0; 
     explosionSound.play();
 
     setTimeout(function () {
@@ -433,9 +433,9 @@ document.onkeydown = function (e) {
         displayBullets2();
            // Play bullet sound
            var bulletSound = document.getElementById("bulletSound");
-           bulletSound.currentTime = 0; // Reset audio to the beginning
+           bulletSound.currentTime = 0; 
            bulletSound.play();
-        
+    
     }
     displayHero();
 };
