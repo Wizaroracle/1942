@@ -3,70 +3,121 @@
 	<title>1942 Game</title>
 
 <style type="text/css">
-	body{
-		background-color:black;
-	}
-	#container{
-		background: url('background.jpg');
-		width:1000px;
-		height:550px;
-	}
-	#hero{
-		background: url('1942.gif');
-		background-position: -85px -180px;
-		width:28px;
-		height:28px;
-		position:absolute;
-	}
-	.enemy1{
-		background: url('1942.gif');
-		background-position: -30px -10px;
-		width:28px;
-		height:28px;
-		position:absolute;
-	}
-	.bullet{
-		background: url('1942.gif');
-		background-position: -185px -400px;
-		width:18px;
-		height:18px;
-		position:absolute;
-	}
-	#score{
-		position:absolute;
-		border:10px solid red;
-		top:20px;
-		left:800px;
-		background-color:white;
-		padding:10px;
-		font-size:30px;
-		font-family: Arial;	
-	}
+	 body {
+            background-color: black;
+            margin: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        #container {
+            background: url('art/b1.gif');
+            width: 800px;
+            height: 930px;
+            position: relative;
+        }
+
+        #hero {
+            background: url('art/cat2.gif') no-repeat;
+            width: 170px;
+            height: 170px;
+			background-size: cover;
+			background-position: center;
+            position: absolute;
+        }
+
+        .enemy1 {
+            background: url('art/mouse.gif') no-repeat;
+            background-position: -30px -10px;
+            width: 100px;
+            height: 130px;
+            position: absolute;
+			background-size: cover;
+			background-position: center;
+        }
+		.enemy2 {
+            background: url('art/mouse2.gif') no-repeat;
+            background-position: -30px -10px;
+            width: 120px;
+            height: 130px;
+            position: absolute;
+			background-size: cover;
+			background-position: center;
+        }
+
+        .bullet {
+            background: url('art/bullet.gif') no-repeat;
+            background-position: -185px -400px;
+            width: 35px;
+            height: 35px;
+            position: absolute;
+			background-size: cover;
+			background-position: center;
+        }
+		.bullet2 {
+            background: url('art/bullet.gif') no-repeat;
+            background-position: -185px -400px;
+            width: 35px;
+            height: 35px;
+            position: absolute;
+			background-size: cover;
+			background-position: center;
+        }
+
+        #score {
+            position: absolute;
+            border: 10px solid green;
+            top: 200px;
+            left: 1500px;
+            background-color: white;
+            padding: 10px;
+            font-size: 30px;
+            font-family: Arial;
+        }
+		.enemy-health{
+			color: red;
+			font-weight: bolder;
+		}
+        .hit {
+        background: url('art/blood.gif') no-repeat; /* Replace with your explosion image */
+        width: 120px;
+        height: 130px;
+        position: absolute;
+        background-size: cover;
+        background-position: center;
+        animation: explode 3s ease-in-out;
+    }
+        @keyframes explode {
+        0% { transform: scale(1); opacity: 1; }
+        50% { transform: scale(1.5); opacity: 0.5; }
+        100% { transform: scale(0); opacity: 0; }
+    }
 </style>
 </head>
 <body>
 	<div id='container'>
-		<div id='hero' style='top:300px; left:300px;'></div>
-		<div id='enemies'>
-			<div class='enemy1' style='top:100px; left:100px;'></div>
-			<div class='enemy1' style='top:100px; left:200px;'></div>
-			<div class='enemy1' style='top:100px; left:300px;'></div>
-			<div class='enemy1' style='top:100px; left:400px;'></div>
-		</div>
-		<div id='bullets'>
-			<div class='bullet' style='top:150px; left:200px;'></div>
-			<div class='bullet' style='top:250px; left:200px;'></div>
-			<div class='bullet' style='top:350px; left:200px;'></div>
-			<div class='bullet' style='top:450px; left:200px;'></div>
-		</div>	
+		<div id='hero'></div>
+		<div id='enemies'></div>
+		<div id='enemies2'></div>
+		<div id='bullets'></div>	
+		<div id='bullet2'></div>	
 	</div>
-
+    <audio id="explosionSound">
+        <source src="art/sound/mice.mp3" type="audio/mp3"> <!-- Replace with the path to your explosion sound file -->
+    </audio>
+    <audio id="explosionSound2">
+        <source src="art/sound/zapsplat_animals_rat_death_screech_001_72268.mp3" type="audio/mp3"> <!-- Replace with the path to your bullet sound file -->
+    </audio>
+    <audio id="bulletSound">
+        <source src="art/sound/mixkit-wizard-fire-woosh-1326.wav" type="audio/mp3"> <!-- Replace with the path to your bullet sound file -->
+    </audio>
 	<div id='score'>100</div>
 
 
-<script>
-
-</script>
+<script src="script.js"></script>
 
 </body>
 </html>
